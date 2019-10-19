@@ -9,7 +9,8 @@
 		<field name="arch" type="xml">
 		    <xpath expr="//page[@name='sales']" position="inside">
 			<group>
-			    <field name ="maximum_order_quantity"/>	
+				<field name ="is_maximum"/>	
+			    <field name ="maximum_order_quantity" attrs="{'invisible': [('is_maximum', '=', False)]}"/>	
 			</group>			
 		    </xpath>
 		</field>
@@ -24,7 +25,8 @@
 		<field name="arch" type="xml">
 		    <xpath expr="//page[@name='sales']" position="inside">
 			<group>
-			    <field name ="maximum_order_quantity"/>	
+				<field name ="is_maximum"/>	
+			    <field name ="maximum_order_quantity" attrs="{'invisible': [('is_maximum', '=', False)]}"/>	
 			</group>			
 		    </xpath>
 		</field>
