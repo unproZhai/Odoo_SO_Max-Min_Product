@@ -13,10 +13,10 @@ class SaleOrder(models.Model):
     def check_constraint_quantity(self):
         for record in self:
             if record.order_line:
-                for product_ids in record.order_line:
-                    product_id = product_ids.product_id.id 
-                    product = self.env['product.product'].browse(product)
+                for line in record.order_line:
+                    product_id = line.product_id.id 
+                    product = self.env['product.product'].browse(product_id)
                     if product.is_maximum:
                         maximum_order_qty = product.maximum_order_quantity 
-                        if product_ids.product_uom_qty > maximum_order_qty: 
-                            raise ValidationError(_('Maximum order quantity of the product' +product_ids.name+' is ' +str(maximum_order_qty)))  
+                        if line.product_uom_qty > maximum_order_qty: 
+                            raise ValidationError(_('Maximum order quantity of the product' +line.name+' is ' +str(maximum_order_qty)))  
